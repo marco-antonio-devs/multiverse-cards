@@ -17,6 +17,7 @@ typedef struct
 	int deployCost;
 	
 	MCards_CardSpawn * spawns[];
+	int spawnCount;
 }
 MCards_CardBase;
 

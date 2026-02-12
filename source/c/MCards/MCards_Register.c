@@ -91,6 +91,12 @@ void MCards_CleanUpRegistry()
 	for(size_t index = 0; index < registry->cardCount; index++)
 	{
 		free(registry->cardData[index]->displayName);
+		
+		for(size_t x = 0; x < registry->cardData[index]->spawnCount; x++)
+		{
+    		free(registry->cardData[index]->spawns[x]);
+		}
+		
 		free(registry->cardData[index]);
 	}
 	
@@ -307,13 +313,21 @@ void MCards_StartUpCards()
 		return;
 	}
 	
+	MCards_CardSpawn * cardSpawns[5];
+	
+	cardSpawns[0] = MCards_CreateCardSpawn("U_Gravedigger", 1);
+	cardSpawns[1] = MCards_CreateCardSpawn("U_Tribal", 2);
+	cardSpawns[2] = MCards_CreateCardSpawn("U_Pelican", 1);
+	cardSpawns[3] = MCards_CreateCardSpawn("U_Bandit", 1);
+	cardSpawns[4] = MCards_CreateCardSpawn("U_LRobot", 1);
+	
 	MCards_CardBase * cards[5];
 	
-	cards[0] = MCards_CreateCard("Gravedigger", 3);
-	cards[1] = MCards_CreateCard("Tribals", 2);
-	cards[2] = MCards_CreateCard("Pelican", 5);
-	cards[3] = MCards_CreateCard("Bandit", 4);
-	cards[4] = MCards_CreateCard("L-Robot", 4);
+	cards[0] = MCards_CreateCard("Gravedigger", 3, {cardSpawns[0]});
+	cards[1] = MCards_CreateCard("Tribals", 2, {cardSpawns[1]});
+	cards[2] = MCards_CreateCard("Pelican", 5, {cardSpawns[2]});
+	cards[3] = MCards_CreateCard("Bandit", 4, {cardSpawns[3]});
+	cards[4] = MCards_CreateCard("L-Robot", 4, cardSpawns[4]);
 	
 	const char * cardIDs[5];
 	
@@ -356,7 +370,7 @@ void MCards_StartUpUnits()
 	const char * unitIDs[5];
 	
 	unitIDs[0] = "U_Gravedigger";
-	unitIDs[1] = "U_Tribals";
+	unitIDs[1] = "U_Tribal";
 	unitIDs[2] = "U_Pelican";
 	unitIDs[3] = "U_Bandit";
 	unitIDs[4] = "U_LRobot";
@@ -420,16 +434,13 @@ MCards_CardSpawn * MCards_CreateCardSpawn(const char * iD, unsigned int count)
 		return NULL;
 	}
 	
-	
-	
 	size_t iDLength = strlen(iD) + 1;
 	
 	cardSpawn->iD = malloc(iDLength);
 	
-	if(!iDLength)
+	if(!iD)
 	{
 		perror("Houve uma falha ao alocar o identificador de conjuração da carta na memória.");
-		free(cardSpawn->iD);
 		free(cardSpawn);
 		
 		return NULL;
@@ -437,13 +448,12 @@ MCards_CardSpawn * MCards_CreateCardSpawn(const char * iD, unsigned int count)
 	
 	strcpy(cardSpawn->iD, iD);
 	
-	cardSpawn->iD = iD;
 	cardSpawn->count = count;
 	
 	return cardSpawn;
 }
 
-MCards_CardBase * MCards_CreateCard(const char * dn, int dc, MCards_CardSpawn ** spawns)
+MCards_CardBase * MCards_CreateCard(const char * dn, int dc, MCards_CardSpawn * spawns[])
 {
 	MCards_CardBase * card = malloc(sizeof(MCards_CardBase));
 	
@@ -528,7 +538,7 @@ MCards_LeaderBase * MCards_CreateLeader(int hp, int dm, float ad, float ar)
 
 bool MCards_ContainsCard(const char * iD)
 {
-	for(int index = 0; index < registry->cardCount; index++)
+	for(size_t index = 0; index < registry->cardCount; index++)
 	{
 		if(strcmp(registry->cardIDs[index], iD) == 0)
 		{
@@ -545,7 +555,7 @@ bool MCards_ContainsCard(const char * iD)
 
 bool MCards_ContainsUnit(const char * iD)
 {
-	for(int index = 0; index < registry->unitCount; index++)
+	for(size_t index = 0; index < registry->unitCount; index++)
 	{
 		if(strcmp(registry->unitIDs[index], iD) == 0)
 		{
@@ -562,7 +572,7 @@ bool MCards_ContainsUnit(const char * iD)
 
 bool MCards_ContainsLeader(const char * iD)
 {
-	for(int index = 0; index < registry->leaderCount; index++)
+	for(size_t index = 0; index < registry->leaderCount; index++)
 	{
 		if(strcmp(registry->leaderIDs[index], iD) == 0)
 		{
