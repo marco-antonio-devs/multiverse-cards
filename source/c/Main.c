@@ -7,6 +7,9 @@
 int main()
 {
 	MCards_InitializeRegistry();
+	
+	printf("\n");
+	
 	MCards_StartUpCards();
 	
 	printf("\n");
@@ -16,6 +19,9 @@ int main()
 	printf("\n");
 	
 	MCards_StartUpLeaders();
+	
+	printf("\n");
+	
 	MCards_CleanUpRegistry();
 	
 	return 0;

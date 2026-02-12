@@ -26,7 +26,7 @@ void MCards_InitializeRegistry()
 	
 	registry->cardData = malloc(registry->maxCards * sizeof(MCards_CardBase *));
 	registry->unitData = malloc(registry->maxUnits * sizeof(MCards_UnitBase *));
-	registry->leaderData = malloc(registry->maxLeaders * sizeof(MCards_UnitBase *));
+	registry->leaderData = malloc(registry->maxLeaders * sizeof(MCards_LeaderBase *));
 	
 	registry->cardIDs = malloc(registry->maxCards * sizeof(const char *));
 	registry->unitIDs = malloc(registry->maxUnits * sizeof(const char *));
@@ -408,7 +408,42 @@ void MCards_StartUpLeaders()
 	}
 }
 
-MCards_CardBase * MCards_CreateCard(const char * dn, int dc)
+MCards_CardSpawn * MCards_CreateCardSpawn(const char * iD, unsigned int count)
+{
+	MCards_CardSpawn * cardSpawn = malloc(sizeof(MCards_CardSpawn));
+	
+	if(!cardSpawn)
+	{
+		perror("Houve uma falha ao alocar os dados de conjuração da carta na memória.");
+		free(cardSpawn);
+		
+		return NULL;
+	}
+	
+	
+	
+	size_t iDLength = strlen(iD) + 1;
+	
+	cardSpawn->iD = malloc(iDLength);
+	
+	if(!iDLength)
+	{
+		perror("Houve uma falha ao alocar o identificador de conjuração da carta na memória.");
+		free(cardSpawn->iD);
+		free(cardSpawn);
+		
+		return NULL;
+	}
+	
+	strcpy(cardSpawn->iD, iD);
+	
+	cardSpawn->iD = iD;
+	cardSpawn->count = count;
+	
+	return cardSpawn;
+}
+
+MCards_CardBase * MCards_CreateCard(const char * dn, int dc, MCards_CardSpawn ** spawns)
 {
 	MCards_CardBase * card = malloc(sizeof(MCards_CardBase));
 	
@@ -427,6 +462,16 @@ MCards_CardBase * MCards_CreateCard(const char * dn, int dc)
 	if(!card->displayName)
 	{
 		perror("Houve uma falha ao alocar o nome de exibição da carta na memória.");
+		free(card->displayName);
+		free(card);
+		
+		return NULL;
+	}
+	
+	if(dc <= 0 || dc > 10)
+	{
+		perror("Você atribuiu um valor incorreto no custo de conjuração da carta. O valor não pode ser menor ou igual a zero (0) e maior que dez (10).");
+		free(card->displayName);
 		free(card);
 		
 		return NULL;
@@ -435,8 +480,7 @@ MCards_CardBase * MCards_CreateCard(const char * dn, int dc)
 	strcpy(card->displayName, dn);
 	
 	card->deployCost = dc;
-	card->spawns = NULL;
-	card->spawnCount = 0;
+	card->spawns = spawns;
 	
 	return card;
 }
@@ -480,4 +524,55 @@ MCards_LeaderBase * MCards_CreateLeader(int hp, int dm, float ad, float ar)
 	leader->attackRange = ar;
 	
 	return leader;
+}
+
+bool MCards_ContainsCard(const char * iD)
+{
+	for(int index = 0; index < registry->cardCount; index++)
+	{
+		if(strcmp(registry->cardIDs[index], iD) == 0)
+		{
+			return true;
+		}
+		else
+		{
+			continue;
+		}
+	}
+	
+	return false;
+}
+
+bool MCards_ContainsUnit(const char * iD)
+{
+	for(int index = 0; index < registry->unitCount; index++)
+	{
+		if(strcmp(registry->unitIDs[index], iD) == 0)
+		{
+			return true;
+		}
+		else
+		{
+			continue;
+		}
+	}
+	
+	return false;
+}
+
+bool MCards_ContainsLeader(const char * iD)
+{
+	for(int index = 0; index < registry->leaderCount; index++)
+	{
+		if(strcmp(registry->leaderIDs[index], iD) == 0)
+		{
+			return true;
+		}
+		else
+		{
+			continue;
+		}
+	}
+	
+	return false;
 }

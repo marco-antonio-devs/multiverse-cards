@@ -82,13 +82,21 @@ void MCards_StartUpUnits();
 void MCards_StartUpLeaders();
 
 /**
+ * @brief   Criação e alocação de um novo dado de conjuração de carta memória.
+ * @details Deve ser chamada antes da chamada de inicializar as cartas ao registro principal.
+ * @param   [in] iD O identificador referente à unidade conjurável.
+ * @param   [in] count A quantidade de unidades conjuradas.
+ */
+MCards_CardSpawn * MCards_CreateCardSpawn(const char * iD, unsigned int count);
+
+/**
  * @brief   Criação e alocação uma nova carta na memória.
  * @details Deve ser chamada antes da chamada de inicializar as unidades ao registro principal.
  * @param   [in] dn O nome de exibição da carta.
  * @param   [in] dc O custo de implantação da carta.
  * @return  Uma estrutura base de carta genérica alocada na memória.
  */
-MCards_CardBase * MCards_CreateCard(const char * dn, int dc);
+MCards_CardBase * MCards_CreateCard(const char * dn, int dc, MCards_CardSpawn ** spawns);
 
 /**
  * @brief   Criação e alocação uma nova unidade na memória.
@@ -104,7 +112,7 @@ MCards_UnitBase * MCards_CreateUnit(int hp, int dm, float ad, float ms, float ar
 
 /**
  * @brief   Criação e alocação um novo líder na memória.
- * @details Deve ser chamada antes da chamada de inicializar as unidades ao registro principal.
+ * @details Deve ser chamada antes da chamada de inicializar os líderes ao registro principal.
  * @param   [in] hp Os pontos de saúde do líder.
  * @param   [in] dm Os pontos de dano-direto do líder.
  * @param   [in] ad O intervalo de ataque do líder em segundos.
@@ -112,5 +120,26 @@ MCards_UnitBase * MCards_CreateUnit(int hp, int dm, float ad, float ms, float ar
  * @return  Uma estrutura base de líder genérico alocada na memória.
  */
 MCards_LeaderBase * MCards_CreateLeader(int hp, int dm, float ad, float ar);
+
+/**
+ * @brief   Consulta e verificação da existência de uma carta no registro.
+ * @details Deve ser chamada após a inicialização das cartas no registro.
+ * @param   [in] iD O identificador da carta a ser pesquisada.
+ */
+bool MCards_ContainsCard(const char * iD);
+
+/**
+ * @brief   Consulta e verificação da existência de um líder no registro.
+ * @details Deve ser chamada após a inicialização dos líderes no registro.
+ * @param   [in] iD O identificador do líder a ser pesquisado.
+ */
+bool MCards_ContainsUnit(const char * iD);
+
+/**
+ * @brief   Consulta e verificação da existência de um líder no registro.
+ * @details Deve ser chamada após a inicialização dos líderes no registro.
+ * @param   [in] iD O identificador do líder a ser pesquisado.
+ */
+bool MCards_ContainsLeader(const char * iD);
 
 #endif

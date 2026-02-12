@@ -5,12 +5,18 @@
 
 typedef struct
 {
+	const char * iD;
+	unsigned int count;
+}
+MCards_CardSpawn;
+
+typedef struct
+{
 	char * displayName;
 	
 	int deployCost;
 	
-	const char ** spawns;
-	size_t spawnCount;
+	MCards_CardSpawn * spawns[];
 }
 MCards_CardBase;
 
