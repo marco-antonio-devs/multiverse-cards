@@ -1,4 +1,4 @@
-#ifndef DEF_MCards_Register_Header
+ #ifndef DEF_MCards_Register_Header
 #define DEF_MCards_Register_Header
 
 #include <stddef.h>
@@ -18,10 +18,12 @@ typedef struct
 	MCards_CardBase ** cardData;
 	MCards_UnitBase ** unitData;
 	MCards_LeaderBase ** leaderData;
+	MCards_LeaderCardBase ** leaderCardData;
 	
 	const char ** cardIDs;
 	const char ** unitIDs;
 	const char ** leaderIDs;
+	const char ** leaderCardIDs;
 }
 MCards_Registry;
 
@@ -123,6 +125,16 @@ MCards_UnitBase * MCards_CreateUnit(int hp, int dm, float ad, float ms, float ar
  * @return  Uma estrutura base de líder genérico alocada na memória.
  */
 MCards_LeaderBase * MCards_CreateLeader(int hp, int dm, float ad, float ar);
+
+/**
+ * @brief   Criação e alocação de uma nova carta de líder na memória.
+ * @details Deve ser chamada antes da chamada de inicializar os líderes ao registro principal.
+ * @param   [in] lk A chave de localização da carta de líder.
+ * @param   [in] dn O nome de exibição da carta de líder.
+ * @param   [in] dd A descrição da carta de líder.
+ * @return  Uma estruturs base de carta de líder genérica alocada na memória.
+ */
+MCards_LeaderCardBase * MCards_CreateLeaderCard(const char * lk, const char * dn, const char * dd);
 
 /**
  * @brief   Consulta e verificação da existência de uma carta no registro.

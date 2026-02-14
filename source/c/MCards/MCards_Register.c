@@ -27,10 +27,12 @@ void MCards_InitializeRegistry()
 	registry->cardData = malloc(registry->maxCards * sizeof(MCards_CardBase *));
 	registry->unitData = malloc(registry->maxUnits * sizeof(MCards_UnitBase *));
 	registry->leaderData = malloc(registry->maxLeaders * sizeof(MCards_LeaderBase *));
+	registry->leaderCardData = malloc(registry->maxLeaderCards * sizeof(MCards_LeaderCardBase *));
 	
 	registry->cardIDs = malloc(registry->maxCards * sizeof(const char *));
 	registry->unitIDs = malloc(registry->maxUnits * sizeof(const char *));
 	registry->leaderIDs = malloc(registry->maxLeaders * sizeof(const char *));
+	registry->leaderCardIDs = malloc(registry->maxLeaderCards * sizeof(const char *));
 	
 	if(!registry->cardData)
 	{

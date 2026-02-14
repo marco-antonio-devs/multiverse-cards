@@ -14,6 +14,7 @@ typedef struct
 {
 	const char * localizationKey;
 	const char * displayName;
+	const char * displayDescription;
 	
 	int deployCost;
 	
@@ -32,6 +33,14 @@ typedef struct
 	float attackRange;
 }
 MCards_UnitBase;
+
+typedef struct
+{
+	const char * localizationKey;
+	const char * displayName;
+	const char * displayDescription;
+}
+MCards_LeaderCardBase;
 
 typedef struct
 {
