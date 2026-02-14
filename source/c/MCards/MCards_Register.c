@@ -313,29 +313,39 @@ void MCards_StartUpCards()
 		return;
 	}
 	
-	MCards_CardSpawn * cardSpawns[5];
+	MCards_CardSpawn * cardSpawns[8][1] =
+	{
+		{MCards_CreateCardSpawn("U_Gravedigger", 1)},
+		{MCards_CreateCardSpawn("U_Tribal", 2)},
+		{MCards_CreateCardSpawn("U_Pelican", 1)},
+		{MCards_CreateCardSpawn("U_Bandit", 1)},
+		{MCards_CreateCardSpawn("U_LRobot", 1)},
+		{MCards_CreateCardSpawn("U_Capybara", 4)},
+		{MCards_CreateCardSpawn("U_Seagull", 3)},
+		{MCards_CreateCardSpawn("U_Crusher", 1)},
+	};
 	
-	cardSpawns[0] = MCards_CreateCardSpawn("U_Gravedigger", 1);
-	cardSpawns[1] = MCards_CreateCardSpawn("U_Tribal", 2);
-	cardSpawns[2] = MCards_CreateCardSpawn("U_Pelican", 1);
-	cardSpawns[3] = MCards_CreateCardSpawn("U_Bandit", 1);
-	cardSpawns[4] = MCards_CreateCardSpawn("U_LRobot", 1);
+	MCards_CardBase * cards[8];
 	
-	MCards_CardBase * cards[5];
+	cards[0] = MCards_CreateCard("Local_GravediggerName", "Gravedigger", 3, cardSpawns[0], 1);
+	cards[1] = MCards_CreateCard("Local_TribalsName", "Tribals", 2, cardSpawns[1], 1);
+	cards[2] = MCards_CreateCard("Local_PelicanName", "Pelican", 5, cardSpawns[2], 1);
+	cards[3] = MCards_CreateCard("Local_BanditName", "Bandit", 4, cardSpawns[3], 1);
+	cards[4] = MCards_CreateCard("Local_LRobotName", "L-Robot", 4, cardSpawns[4], 1);
+	cards[5] = MCards_CreateCard("Local_CapybarasName", "Capybaras", 5, cardSpawns[5], 1);
+	cards[6] = MCards_CreateCard("Local_SeagullsName", "Seagulls", 2, cardSpawns[6], 1);
+	cards[7] = MCards_CreateCard("Local_CrusherName", "Crusher", 7, cardSpawns[7], 1);
 	
-	cards[0] = MCards_CreateCard("Gravedigger", 3, {cardSpawns[0]});
-	cards[1] = MCards_CreateCard("Tribals", 2, {cardSpawns[1]});
-	cards[2] = MCards_CreateCard("Pelican", 5, {cardSpawns[2]});
-	cards[3] = MCards_CreateCard("Bandit", 4, {cardSpawns[3]});
-	cards[4] = MCards_CreateCard("L-Robot", 4, cardSpawns[4]);
-	
-	const char * cardIDs[5];
+	const char * cardIDs[8];
 	
 	cardIDs[0] = "C_Gravedigger";
 	cardIDs[1] = "C_Tribals";
 	cardIDs[2] = "C_Pelican";
 	cardIDs[3] = "C_Bandit";
 	cardIDs[4] = "C_LRobot";
+	cardIDs[5] = "C_Capybaras";
+	cardIDs[6] = "C_Seagulls";
+	cardIDs[7] = "C_Crusher";
 	
 	size_t cardLength = sizeof(cards) / sizeof(MCards_CardBase *);
 	
@@ -359,21 +369,27 @@ void MCards_StartUpUnits()
 		return;
 	}
 	
-	MCards_UnitBase * units[5];
+	MCards_UnitBase * units[8];
 	
-	units[0] = MCards_CreateUnit(650, 57,  1.1f, 2.0f, 1.5f);
-	units[1] = MCards_CreateUnit(192, 25,  0.9f, 2.5f, 4.0f);
-	units[2] = MCards_CreateUnit(870, 100, 1.6f, 1.5f, 0.5f);
-	units[3] = MCards_CreateUnit(500, 65,  1.0f, 2.0f, 5.5f);
-	units[4] = MCards_CreateUnit(754, 290, 1.4f, 2.0f, 1.0f);
+	units[0] = MCards_CreateUnit(650,  70,  1.1f, 2.0f, 1.5f);
+	units[1] = MCards_CreateUnit(168,  26,  0.9f, 2.5f, 4.0f);
+	units[2] = MCards_CreateUnit(870,  100, 1.6f, 1.5f, 0.5f);
+	units[3] = MCards_CreateUnit(500,  65,  1.0f, 2.0f, 5.5f);
+	units[4] = MCards_CreateUnit(700,  300, 1.4f, 2.0f, 1.0f);
+	units[5] = MCards_CreateUnit(480,  32,  1.2f, 2.5f, 0.5f);
+	units[6] = MCards_CreateUnit(24,   24,  1.2f, 2.5f, 0.5f);
+	units[7] = MCards_CreateUnit(1100, 144, 1.8f, 1.5f, 1.5f);
 	
-	const char * unitIDs[5];
+	const char * unitIDs[8];
 	
 	unitIDs[0] = "U_Gravedigger";
 	unitIDs[1] = "U_Tribal";
 	unitIDs[2] = "U_Pelican";
 	unitIDs[3] = "U_Bandit";
 	unitIDs[4] = "U_LRobot";
+	unitIDs[5] = "U_Capybara";
+	unitIDs[6] = "U_Seagull";
+	unitIDs[7] = "U_Crusher";
 	
 	size_t unitLength = sizeof(units) / sizeof(MCards_UnitBase *);
 	
@@ -400,8 +416,8 @@ void MCards_StartUpLeaders()
 	MCards_LeaderBase * leaders[3];
 	
 	leaders[0] = MCards_CreateLeader(1536, 45, 1.0f, 7.0f);
-	leaders[1] = MCards_CreateLeader(1600, 90, 1.5f, 1.0f);
-	leaders[2] = MCards_CreateLeader(1440, 56, 0.9f, 1.5f);
+	leaders[1] = MCards_CreateLeader(1700, 90, 1.5f, 1.0f);
+	leaders[2] = MCards_CreateLeader(1600, 56, 0.9f, 1.5f);
 	
 	const char * leaderIDs[3];
 	
@@ -438,7 +454,7 @@ MCards_CardSpawn * MCards_CreateCardSpawn(const char * iD, unsigned int count)
 	
 	cardSpawn->iD = malloc(iDLength);
 	
-	if(!iD)
+	if(!cardSpawn->iD)
 	{
 		perror("Houve uma falha ao alocar o identificador de conjuração da carta na memória.");
 		free(cardSpawn);
@@ -453,7 +469,7 @@ MCards_CardSpawn * MCards_CreateCardSpawn(const char * iD, unsigned int count)
 	return cardSpawn;
 }
 
-MCards_CardBase * MCards_CreateCard(const char * dn, int dc, MCards_CardSpawn * spawns[])
+MCards_CardBase * MCards_CreateCard(const char * lk, const char * dn, int dc, MCards_CardSpawn * spawns[], size_t spawnCount)
 {
 	MCards_CardBase * card = malloc(sizeof(MCards_CardBase));
 	
@@ -465,9 +481,20 @@ MCards_CardBase * MCards_CreateCard(const char * dn, int dc, MCards_CardSpawn * 
 		return NULL;
 	}
 	
+	size_t languageKeyLength = strlen(lk) + 1;
 	size_t nameLength = strlen(dn) + 1;
 	
+	card->localizationKey = malloc(languageKeyLength);
 	card->displayName = malloc(nameLength);
+	
+	if(!card->localizationKey)
+	{
+		perror("Houve uma falha ao alocar a chave de tradução da carta na memória.");
+		free(card->localizationKey);
+		free(card);
+		
+		return NULL;
+	}
 	
 	if(!card->displayName)
 	{
@@ -487,10 +514,24 @@ MCards_CardBase * MCards_CreateCard(const char * dn, int dc, MCards_CardSpawn * 
 		return NULL;
 	}
 	
+	strcpy(card->localizationKey, lk);
 	strcpy(card->displayName, dn);
 	
 	card->deployCost = dc;
-	card->spawns = spawns;
+	
+	for(size_t index = 0; index < spawnCount; index++)
+	{
+		if(spawns[index] != NULL)
+		{
+			card->spawns[index] = spawns[index];
+		}
+		else
+		{
+			continue;
+		}
+	}
+	
+	card->spawnCount = spawnCount;
 	
 	return card;
 }

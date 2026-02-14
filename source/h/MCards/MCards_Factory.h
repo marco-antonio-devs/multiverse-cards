@@ -12,12 +12,13 @@ MCards_CardSpawn;
 
 typedef struct
 {
-	char * displayName;
+	const char * localizationKey;
+	const char * displayName;
 	
 	int deployCost;
 	
+	size_t spawnCount;
 	MCards_CardSpawn * spawns[];
-	int spawnCount;
 }
 MCards_CardBase;
 
