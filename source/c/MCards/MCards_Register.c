@@ -579,6 +579,72 @@ MCards_LeaderBase * MCards_CreateLeader(int hp, int dm, float ad, float ar)
 	return leader;
 }
 
+MCards_LeaderCardBase * MCards_CreateLeaderCard(const char * lk, const char * dn, const char * dd, const char * ri)
+{
+	MCards_LeaderCardBase * leaderCard = malloc(sizeof(MCards_LeaderCardBase));
+	
+	if(!leaderCard)
+	{
+		perror("Houve uma falha ao alocar a carta de líder na memória.");
+		free(leaderCard);
+		
+		return NULL;
+	}
+	
+	size_t languageKeyLength = strlen(lk) + 1;
+	size_t nameLength = strlen(dn) + 1;
+	size_t descriptionLength = strlen(dd) + 1;
+	size_t referenceIDLength = strlen(ri) + 1;
+	
+	leaderCard->localizationKey = malloc(languageKeyLength);
+	leaderCard->displayName = malloc(nameLength);
+	leaderCard->displayDescription = malloc(descriptionLength);
+	leaderCard->referenceID = malloc(referenceIDLength);
+	
+	if(!leaderCard->localizationKey)
+	{
+		perror("Houve um erro ao alocar a chave de localização na memória.");
+		free(leaderCard->localizationKey);
+		free(leaderCard);
+		
+		return NULL;
+	}
+	
+	if(!leaderCard->displayName)
+	{
+		perror("Houve um erro ao alocar o nome de exibição na memória.");
+		free(leaderCard->displayName);
+		free(leaderCard);
+		
+		return NULL;
+	}
+	
+	if(!leaderCard->displayDescription)
+	{
+		perror("Houve um erro ao alocar a decrição na memória.");
+		free(leaderCard->displayDescription);
+		free(leaderCard);
+		
+		return NULL;
+	}
+	
+	if(!leaderCard->referenceID)
+	{
+		perror("Houve um erro ao alocar o identificador de referência na memória.");
+		free(leaderCard->referenceID);
+		free(leaderCard);
+		
+		return NULL;
+	}
+	
+	strcpy(leaderCard->localizationKey, lk);
+	strcpy(leaderCard->displayName, dn);
+	strcpy(leaderCard->displayDescription, dd);
+	strcpy(leaderCard->referenceID, ri);
+	
+	return leaderCard;
+}
+
 bool MCards_ContainsCard(const char * iD)
 {
 	for(size_t index = 0; index < registry->cardCount; index++)

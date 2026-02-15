@@ -10,10 +10,12 @@ typedef struct
 	size_t cardCount;
 	size_t unitCount;
 	size_t leaderCount;
+	size_t leaderCardCount;
 	
 	size_t maxCards;
 	size_t maxUnits;
 	size_t maxLeaders;
+	size_t maxLeaderCards;
 	
 	MCards_CardBase ** cardData;
 	MCards_UnitBase ** unitData;
@@ -44,26 +46,34 @@ void MCards_CleanUpRegistry();
 /**
  * @brief   Registro de uma carta para o sistema.
  * @details Deve ser chamada <b>após</b> o registro principal de cartas, unidades e líderes estar finalmente inicializado.
- * @param [in] leaderBase A estrutura base de carta solicitada para o registro.
- * @param [in] iD O identificador da carta.
+ * @param   [in] leaderBase A estrutura base de carta solicitada para o registro.
+ * @param   [in] iD O identificador da carta.
  */
 void MCards_RegisterCard(MCards_CardBase * cardBase, const char * iD);
 
 /**
  * @brief   Registro de uma unidade para o sistema.
  * @details Deve ser chamada <b>após</b> o registro principal de cartas, unidades e líderes estar finalmente inicializado.
- * @param [in] leaderBase A estrutura base da unidade solicitada para o registro.
- * @param [in] iD O identificador da unidade.
+ * @param   [in] leaderBase A estrutura base da unidade solicitada para o registro.
+ * @param   [in] iD O identificador da unidade.
  */
 void MCards_RegisterUnit(MCards_UnitBase * unitBase, const char * iD);
 
 /**
  * @brief   Registro de líder para o sistema.
  * @details Deve ser chamada <b>após</b> o registro principal de cartas, unidades e líderes estar finalmente inicializado.
- * @param [in] leaderBase A base de líder solicitado para o registro.
- * @param [in] iD O identificador do líder.
+ * @param   [in] leaderBase A base de líder solicitado para o registro.
+ * @param   [in] iD O identificador do líder.
  */
 void MCards_RegisterLeader(MCards_LeaderBase * leaderBase, const char * iD);
+
+/**
+ * @brief   Registro de carta de líder para o sistema.
+ * @details Deve ser chamada <b>após</b> o registro principal de cartas, unidades e líderes estar finalmente inicializado.
+ * @param   [in] leaderCardBase A base de carta de líder solicitada para o registro.
+ * @param   [in] iD O identificador da carta de líder.
+ */
+void MCards_RegisterLeaderCard(MCards_LeaderCardBase * leaderCardBase, const char * iD);
 
 /**
  * @brief   Inicialização todas as cartas para o registro principal.

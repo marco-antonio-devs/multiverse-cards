@@ -7,7 +7,7 @@ gcc -Wall \
 	-std=c23 \
 	-g \
 	./source/c/MCards/MCards_Register.c \
-	./source/c/MCards/MCards_Localizations.c \
+	./source/c/MCards/MCards_Localization.c \
 	./source/c/Main.c \
 	-I./source/h \
 	-o build/multiverse-cards.out
