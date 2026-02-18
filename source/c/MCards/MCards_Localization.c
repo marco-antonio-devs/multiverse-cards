@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <MCards/MCards_Localization.h>
+#include <MCards/UserInterface/MCards_Localization.h>
 
 MCards_LocalizationRegistry * localizationRegistry = NULL;
 

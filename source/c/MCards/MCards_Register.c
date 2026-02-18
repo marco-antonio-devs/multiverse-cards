@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <MCards/MCards_Register.h>
-#include <MCards/MCards_Factory.h>
+#include <MCards/Core/MCards_Register.h>
+#include <MCards/Core/MCards_Factory.h>
 
 MCards_Registry * registry = NULL;
 
@@ -336,20 +336,20 @@ void MCards_StartUpCards()
 	
 	MCards_CardBase * cards[14];
 	
-	cards[0]  = MCards_CreateCard("Local_GravediggerName", "Gravedigger", 3, cardSpawns[0], 1);
-	cards[1]  = MCards_CreateCard("Local_TribalsName", "Tribals", 2, cardSpawns[1], 1);
-	cards[2]  = MCards_CreateCard("Local_PelicanName", "Pelican", 5, cardSpawns[2], 1);
-	cards[3]  = MCards_CreateCard("Local_BanditName", "Bandit", 4, cardSpawns[3], 1);
-	cards[4]  = MCards_CreateCard("Local_LRobotName", "L-Robot", 4, cardSpawns[4], 1);
-	cards[5]  = MCards_CreateCard("Local_CapybarasName", "Capybaras", 5, cardSpawns[5], 1);
-	cards[6]  = MCards_CreateCard("Local_SeagullsName", "Seagulls", 2, cardSpawns[6], 1);
-	cards[7]  = MCards_CreateCard("Local_CrusherName", "Crusher", 7, cardSpawns[7], 1);
-	cards[8]  = MCards_CreateCard("Local_TheropodName", "Theropod", 4, cardSpawns[8], 1);
-	cards[9]  = MCards_CreateCard("Local_StrangeWormsName", "Strange Worms", 5, cardSpawns[9], 1);
-	cards[10] = MCards_CreateCard("Local_HallucinationName", "Hallucination", 5, cardSpawns[10], 2);
-	cards[11] = MCards_CreateCard("Local_PampaHorsemanName", "Pampa Horseman", 5, cardSpawns[11], 1);
-	cards[12] = MCards_CreateCard("Local_GunDealerName", "Gun Dealer", 4, cardSpawns[12], 1);
-	cards[13] = MCards_CreateCard("Local_PlagueKillerName", "Plague Killer", 4, cardSpawns[13], 1);
+	cards[0]  = MCards_CreateCard("Local_GravediggerName", 3, cardSpawns[0], 1);
+	cards[1]  = MCards_CreateCard("Local_TribalsName", 2, cardSpawns[1], 1);
+	cards[2]  = MCards_CreateCard("Local_PelicanName", 5, cardSpawns[2], 1);
+	cards[3]  = MCards_CreateCard("Local_BanditName", 4, cardSpawns[3], 1);
+	cards[4]  = MCards_CreateCard("Local_LRobotName", 4, cardSpawns[4], 1);
+	cards[5]  = MCards_CreateCard("Local_CapybarasName", 5, cardSpawns[5], 1);
+	cards[6]  = MCards_CreateCard("Local_SeagullsName", 2, cardSpawns[6], 1);
+	cards[7]  = MCards_CreateCard("Local_CrusherName", 7, cardSpawns[7], 1);
+	cards[8]  = MCards_CreateCard("Local_TheropodName", 4, cardSpawns[8], 1);
+	cards[9]  = MCards_CreateCard("Local_StrangeWormsName", 5, cardSpawns[9], 1);
+	cards[10] = MCards_CreateCard("Local_HallucinationName", 5, cardSpawns[10], 2);
+	cards[11] = MCards_CreateCard("Local_PampaHorsemanName", 5, cardSpawns[11], 1);
+	cards[12] = MCards_CreateCard("Local_GunDealerName", 4, cardSpawns[12], 1);
+	cards[13] = MCards_CreateCard("Local_PlagueKillerName", 4, cardSpawns[13], 1);
 	
 	const char * cardIDs[14];
 	

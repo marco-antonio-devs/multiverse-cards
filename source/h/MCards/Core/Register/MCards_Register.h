@@ -94,6 +94,12 @@ void MCards_StartUpUnits();
 void MCards_StartUpLeaders();
 
 /**
+ * @brief   Inicialização todos as cartas de líderes para o registro principal.
+ * @details Deve ser chamada após a inicialização do registro.
+ */
+void MCards_StartUpLeaderCards();
+
+/**
  * @brief   Criação e alocação de um novo dado de conjuração de carta memória.
  * @details Deve ser chamada antes da chamada de inicializar as cartas ao registro principal.
  * @param   [in] iD O identificador referente à unidade conjurável.
@@ -105,13 +111,12 @@ MCards_CardSpawn * MCards_CreateCardSpawn(const char * iD, unsigned int count);
  * @brief   Criação e alocação uma nova carta na memória.
  * @details Deve ser chamada antes da chamada de inicializar as unidades ao registro principal.
  * @param   [in] lk A chave de localização da carta.
- * @param   [in] dn O nome de exibição da carta.
  * @param   [in] dc O custo de implantação da carta.
  * @param   [in] spawns Os dados de conjuração da carta.
  * @param   [in] spawnCount A quantidade de dados de conjuração (definidos no parâmetro anterior) da carta.
  * @return  Uma estrutura base de carta genérica alocada na memória.
  */
-MCards_CardBase * MCards_CreateCard(const char * lk, const char * dn, int dc, MCards_CardSpawn * spawns[], size_t spawnCount);
+MCards_CardBase * MCards_CreateCard(const char * lk, int dc, MCards_CardSpawn * spawns[], size_t spawnCount);
 
 /**
  * @brief   Criação e alocação uma nova unidade na memória.
@@ -142,9 +147,10 @@ MCards_LeaderBase * MCards_CreateLeader(int hp, int dm, float ad, float ar);
  * @param   [in] lk A chave de localização da carta de líder.
  * @param   [in] dn O nome de exibição da carta de líder.
  * @param   [in] dd A descrição da carta de líder.
+ * @param   [in] ri O identificador do líder dentro do registro.
  * @return  Uma estruturs base de carta de líder genérica alocada na memória.
  */
-MCards_LeaderCardBase * MCards_CreateLeaderCard(const char * lk, const char * dn, const char * dd);
+MCards_LeaderCardBase * MCards_CreateLeaderCard(const char * lk, const char * dn, const char * dd, const char * ri);
 
 /**
  * @brief   Consulta e verificação da existência de uma carta no registro.
