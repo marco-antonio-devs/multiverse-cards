@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 
-#include <MCards/MCards_Factory.h>
+#include <MCards/Core/Register/MCards_Factory.h>
 
 typedef struct
 {
@@ -110,13 +110,14 @@ MCards_CardSpawn * MCards_CreateCardSpawn(const char * iD, unsigned int count);
 /**
  * @brief   Criação e alocação uma nova carta na memória.
  * @details Deve ser chamada antes da chamada de inicializar as unidades ao registro principal.
- * @param   [in] lk A chave de localização da carta.
+ * @param   [in] nk A chave de localização do nome da carta.
+ * @param   [in] dk A chave de localização da descrição da carta.
  * @param   [in] dc O custo de implantação da carta.
  * @param   [in] spawns Os dados de conjuração da carta.
  * @param   [in] spawnCount A quantidade de dados de conjuração (definidos no parâmetro anterior) da carta.
  * @return  Uma estrutura base de carta genérica alocada na memória.
  */
-MCards_CardBase * MCards_CreateCard(const char * lk, int dc, MCards_CardSpawn * spawns[], size_t spawnCount);
+MCards_CardBase * MCards_CreateCard(const char * nk, const char * dk, int dc, MCards_CardSpawn * spawns[], size_t spawnCount);
 
 /**
  * @brief   Criação e alocação uma nova unidade na memória.

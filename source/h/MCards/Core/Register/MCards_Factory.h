@@ -12,9 +12,8 @@ MCards_CardSpawn;
 
 typedef struct
 {
-	const char * localizationKey;
-	const char * displayName;
-	const char * displayDescription;
+	const char * nameKey;
+	const char * descriptionKey;
 	
 	int deployCost;
 	
@@ -33,6 +32,15 @@ typedef struct
 	float attackRange;
 }
 MCards_UnitBase;
+
+typedef struct
+{
+	int hitpoints;
+	int directDamage;
+	
+	float attackDelay;
+}
+MCards_BuildingBase;
 
 typedef struct
 {
