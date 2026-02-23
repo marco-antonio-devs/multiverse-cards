@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <MCards/MCards_Register.h>
-#include <MCards/MCards_Factory.h>
+#include <MCards/Core/Register/MCards_Register.h>
+#include <MCards/Core/Register/MCards_Factory.h>
 
 int main()
 {

@@ -110,8 +110,8 @@ MCards_CardSpawn * MCards_CreateCardSpawn(const char * iD, unsigned int count);
 /**
  * @brief   Criação e alocação uma nova carta na memória.
  * @details Deve ser chamada antes da chamada de inicializar as unidades ao registro principal.
- * @param   [in] nk A chave de localização do nome da carta.
- * @param   [in] dk A chave de localização da descrição da carta.
+ * @param   [in] nk A chave de localização para o nome da carta.
+ * @param   [in] dk A chave de localização para a descrição da carta.
  * @param   [in] dc O custo de implantação da carta.
  * @param   [in] spawns Os dados de conjuração da carta.
  * @param   [in] spawnCount A quantidade de dados de conjuração (definidos no parâmetro anterior) da carta.

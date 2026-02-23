@@ -9,7 +9,7 @@ typedef struct
 MCards_Vector2D;
 
 /**
- * @brief   Criação e aloca çao uma instância de vetor bidimensional na memória.
+ * @brief   Criação e alocalçao uma instância de vetor bidimensional na memória.
  * @details Usada para definir uma coordenada no Plano-Cartesiano de duas dimensões.
  * @param   [in] cx A coordenada horizontal relativa à tela, com o valor entre zero (0.0f) até dois (2.0f).
  * @param   [in] cy A coordenada vertical relativa à tela, com o valor entre zero (0.0f) até dois (2.0f).
@@ -21,7 +21,7 @@ MCards_Vector2D * MCards_CreateVector2D(float cx, float cy);
  * @brief   Obtenção e retorno do valor de coordenada horizontal do vetor.
  * @details Requer que o vetor solicitado já esteja alocado na memória.
  * @param   [in] vector2D O vetor solicitado para consulta e retorno da coordenada desejada.
- * @return  O valor de coordenada horizontal do vetor, que tenha entre zero (0.0f) e dois (2.0f).
+ * @return  O valor de coordenada horizontal cujo o vetor tenha entre zero (0.0f) e dois (2.0f).
  */
 float MCards_GetVectorXCoordinate(MCards_Vector2D * vector2D);
 
