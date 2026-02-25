@@ -1,6 +1,10 @@
 #ifndef DEF_MCards_Localization_Header
 #define DEF_MCards_Localization_Header
 
+/**
+ * @brief   Conjunto de idiomas disponíveis.
+ * @details Este conjunto inclui três idiomas europeus, um norte-americano, um sul-americano e um asiático.
+ */
 typedef enum
 {
 	E_MCards_EnglishNA = 0,
@@ -9,7 +13,7 @@ typedef enum
 	E_MCards_FrenchEU,
 	E_MCards_DeutschEU,
 	E_MCards_JapaneseAS,
-	
+
 	E_MCards_LanguageCount,
 }
 MCards_Language;
@@ -41,7 +45,7 @@ void MCards_InitializeLocalization(MCards_Language defaultLanguage);
 
 /**
  * @brief   Limpeza e desativação do registro de localizações.
- * @details Deve ser chamada uma única vez no final para liberação de memória R.A.M.
+ * @details Deve ser chamada uma única vez no final para liberação de memória.
  */
 void MCards_CleanUpLocalization();
 

@@ -1,0 +1,14 @@
+PROJECT_NAME           = "Multiverse Cards"
+PROJECT_BRIEF          = "Um jogo caótico de cartas e universos, em código aberto."
+OPTIMIZE_OUTPUT_FOR_C  = YES
+EXTRACT_ALL            = YES
+SOURCE_BROWSER         = YES
+GENERATE_HTML          = YES
+GENERATE_LATEX         = YES
+CALL_GRAPH             = YES
+INPUT                  = source/h/
+RECURSIVE              = YES
+OUTPUT_LANGUAGE        = Portuguese
+FULL_SIDEBAR           = YES
+HTML_DYNAMIC_MENUS     = YES
+HTML_COLORSTYLE        = LIGHT

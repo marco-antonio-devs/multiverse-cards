@@ -8,15 +8,10 @@ int main()
 {
 	MCards_InitializeRegistry();
 	MCards_StartUpCards();
-	
-	printf("\n");
-	
 	MCards_StartUpUnits();
-	
-	printf("\n");
-	
 	MCards_StartUpLeaders();
+	MCards_StartUpLeaderCards();
 	MCards_CleanUpRegistry();
-	
+
 	return 0;
 }

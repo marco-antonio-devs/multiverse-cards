@@ -11,17 +11,17 @@ typedef struct
 	size_t unitCount;
 	size_t leaderCount;
 	size_t leaderCardCount;
-	
+
 	size_t maxCards;
 	size_t maxUnits;
 	size_t maxLeaders;
 	size_t maxLeaderCards;
-	
+
 	MCards_CardBase ** cardData;
 	MCards_UnitBase ** unitData;
 	MCards_LeaderBase ** leaderData;
 	MCards_LeaderCardBase ** leaderCardData;
-	
+
 	const char ** cardIDs;
 	const char ** unitIDs;
 	const char ** leaderIDs;
@@ -94,6 +94,12 @@ void MCards_StartUpUnits();
 void MCards_StartUpLeaders();
 
 /**
+ * @brief   Inicialização todas as cartas de líderes para o registro principal.
+ * @details Deve ser chamada após a inicialização do registro.
+ */
+void MCards_StartUpLeaderCards();
+
+/**
  * @brief   Inicialização todos as cartas de líderes para o registro principal.
  * @details Deve ser chamada após a inicialização do registro.
  */
@@ -151,7 +157,7 @@ MCards_LeaderBase * MCards_CreateLeader(int hp, int dm, float ad, float ar);
  * @param   [in] ri O identificador do líder dentro do registro.
  * @return  Uma estruturs base de carta de líder genérica alocada na memória.
  */
-MCards_LeaderCardBase * MCards_CreateLeaderCard(const char * lk, const char * dn, const char * dd, const char * ri);
+MCards_LeaderCardBase * MCards_CreateLeaderCard(const char * nk, const char * dk, const char * ri);
 
 /**
  * @brief   Consulta e verificação da existência de uma carta no registro.

@@ -12,7 +12,6 @@ MCards_CardSpawn;
 
 typedef struct
 {
-	const char * localizationKey;
 	const char * displayName;
 	const char * displayDescription;
 	
@@ -36,7 +35,6 @@ MCards_UnitBase;
 
 typedef struct
 {
-	const char * localizationKey;
 	const char * displayName;
 	const char * displayDescription;
 	const char * referenceID;

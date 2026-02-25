@@ -1,10 +1,14 @@
 #ifndef DEF_MCards_Mathematics_Header
 #define DEF_MCards_Mathematics_Header
 
+/**
+ * @brief   Vetor bidimensional.
+ * @details Representa um ponto dentro do Plano-Cartesiano zero (0.0f) representando a extremidade esquerda da tela e vice-versa para dois (2.0f).
+ */
 typedef struct
 {
-	float coordinateX;
-	float coordinateY;
+	float coordinateX; /**< Coordenada horizontal deste vetor bidimensional.*/
+	float coordinateY; /**< Coordenada vertical deste vetor bidimensional.*/
 }
 MCards_Vector2D;
 
