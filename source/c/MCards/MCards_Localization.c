@@ -34,7 +34,8 @@ void MCards_InitializeLocalization(MCards_Language defaultLanguage)
 	
 	if(!localizationRegistry->entries)
 	{
-		perror("Houve uma falha ao alocar o registro de localizações na memória R.A.M.");
+		perror("Houve uma falha ao alocar o registro de localizações na memória.");
+		
 		free(localizationRegistry);
 		
 		localizationRegistry = NULL;

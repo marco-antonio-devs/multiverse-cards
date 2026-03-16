@@ -12,6 +12,6 @@ int main()
 	MCards_StartUpLeaders();
 	MCards_StartUpLeaderCards();
 	MCards_CleanUpRegistry();
-
+	
 	return 0;
 }
