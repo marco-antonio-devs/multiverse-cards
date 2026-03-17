@@ -391,7 +391,7 @@ void MCards_StartUpCards()
 		return;
 	}
 	
-	MCards_CardSpawn * cardSpawns[15][DEF_MCards_Register_MaxCardSpawns] =
+	MCards_CardSpawn * cardSpawns[15][DEF_MCards_MaxCardSpawns] =
 	{
 		NULL
 	};

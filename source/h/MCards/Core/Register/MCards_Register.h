@@ -5,7 +5,7 @@
 
 #include <MCards/Core/Register/MCards_Factory.h>
 
-#define DEF_MCards_Register_MaxCardSpawns 2
+#define DEF_MCards_MaxCardSpawns 2
 
 typedef struct
 {
