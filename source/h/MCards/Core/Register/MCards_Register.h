@@ -1,9 +1,11 @@
- #ifndef DEF_MCards_Register_Header
+#ifndef DEF_MCards_Register_Header
 #define DEF_MCards_Register_Header
 
 #include <stddef.h>
 
 #include <MCards/Core/Register/MCards_Factory.h>
+
+#define DEF_MCards_Register_MaxCardSpawns 2
 
 typedef struct
 {
@@ -164,7 +166,7 @@ MCards_LeaderBase * MCards_CreateLeader(int hp, int dm, float ad, float ar);
  *
  * @return  Uma estruturs base de carta de líder genérica alocada na memória.
  */
-MCards_LeaderCardBase * MCards_CreateLeaderCard(const char * nk, const char * dk, const char * ri);
+MCards_LeaderCardBase * MCards_CreateLeaderCard(char * nk, char * dk, char * ri);
 
 /**
  * @brief   Consulta e verificação da existência de uma carta no registro.
@@ -239,5 +241,41 @@ MCards_LeaderBase * MCards_GetLeaderByID(const char * iD);
  * @return  Uma instância caso encontre o identificador no registro. Caso contrário um valor nulo.
  */
 MCards_LeaderCardBase * MCards_GetLeaderCardByID(const char * iD);
+
+/**
+ * @brief   Consulta e obtenção de todas as cartas no registro principal.
+ * @details Deve ser chamada após a inicialização do registro.
+ *          Esse método retorna uma lista de dados das cartas baseado no identificador iterado.
+ *
+ * @return  Ponteiros de todas as cartas registradas.
+ */
+MCards_CardBase ** MCards_GetAllCardDatas();
+
+/**
+ * @brief   Consulta e obtenção de todas as unidades no registro principal.
+ * @details Deve ser chamada após a inicialização do registro.
+ *          Esse método retorna uma lista de dados das unidades baseado no identificador iterado.
+ *
+ * @return  Ponteiros de todas as unidades registradas.
+ */
+MCards_UnitBase ** MCards_GetAllUnitDatas();
+
+/**
+ * @brief   Consulta e obtenção de todos os líderes no registro principal.
+ * @details Deve ser chamada após a inicialização do registro.
+ *          Esse método retorna uma lista de dados dos líderes baseado no identificador iterado.
+ *
+ * @return  Ponteiros de todos os líderes registrados.
+ */
+MCards_LeaderBase ** MCards_GetAllLeaderDatas();
+
+/**
+ * @brief   Consulta e obtenção de todas as cartas de líderes no registro principal.
+ * @details Deve ser chamada após a inicialização do registro.
+ *          Esse método retorna uma lista de dados das cartas de líder baseado no identificador iterado.
+ *
+ * @return  Ponteiros de todas as cartas de líderes registradas.
+ */
+MCards_LeaderCardBase ** MCards_GetAllLeaderCardDatas();
 
 #endif

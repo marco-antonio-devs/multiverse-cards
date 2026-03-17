@@ -9,7 +9,7 @@
  */
 typedef struct
 {
-	const char * iD;
+	char * iD;
 	unsigned int count;
 }
 MCards_CardSpawn;
@@ -22,8 +22,8 @@ MCards_CardSpawn;
  */
 typedef struct
 {
-	const char * displayName;
-	const char * displayDescription;
+	char * displayName;
+	char * displayDescription;
 
 	int deployCost;
 
@@ -45,9 +45,9 @@ MCards_UnitBase;
 
 typedef struct
 {
-	const char * displayName;
-	const char * displayDescription;
-	const char * referenceID;
+	char * displayName;
+	char * displayDescription;
+	char * referenceID;
 }
 MCards_LeaderCardBase;
 
