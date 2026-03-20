@@ -3,6 +3,8 @@
 
 #include <stddef.h>
 
+#include <MCards/Core/Rarity/MCards_Rarity.h>
+
 /**
  * @brief   Dados de conjuração da carta.
  * @details Sua alocação consiste em um identificador existente e uma quantidade a ser conjurada.
@@ -28,6 +30,8 @@ typedef struct
 	int deployCost;
 
 	size_t spawnCount;
+	
+	MCards_Rarity rarity;
 	MCards_CardSpawn * spawns[];
 }
 MCards_CardBase;
@@ -48,6 +52,8 @@ typedef struct
 	char * displayName;
 	char * displayDescription;
 	char * referenceID;
+	
+	MCards_Rarity rarity;
 }
 MCards_LeaderCardBase;
 

@@ -157,7 +157,7 @@ void MCards_RegisterCard(MCards_CardBase * cardBase, const char * iD)
 {
 	if(registry == NULL || registry->cardIDs == NULL || registry->cardData == NULL)
 	{
-		perror("Por favor, inicialize o registro principal de cartas, unidades e líderes.");
+		perror("Por favor, inicialize o registro principal.");
 		
 		return;
 	}
@@ -178,6 +178,7 @@ void MCards_RegisterCard(MCards_CardBase * cardBase, const char * iD)
 			return;
 		}
 	}
+	
 	if(registry->cardCount >= registry->maxCards)
 	{
 		size_t newMaxCards = registry->cardCount * 2;
@@ -191,6 +192,7 @@ void MCards_RegisterCard(MCards_CardBase * cardBase, const char * iD)
 			
 			return;
 		}
+		
 		if(!newCardData)
 		{
 			perror("Houve uma falha de inicialização do registro principal, principalmente na alocação de memória para os dados de cartas.");
@@ -212,7 +214,7 @@ void MCards_RegisterUnit(MCards_UnitBase * unitBase, const char * iD)
 {
 	if(registry == NULL || registry->unitIDs == NULL || registry->unitData == NULL)
 	{
-		perror("Por favor, inicialize o registro principal de cartas, unidades e líderes.");
+		perror("Por favor, inicialize o registro principal.");
 		
 		return;
 	}
@@ -270,7 +272,7 @@ void MCards_RegisterLeader(MCards_LeaderBase * leaderBase, const char * iD)
 {
 	if(registry == NULL || registry->leaderIDs == NULL || registry->leaderData == NULL)
 	{
-		perror("Por favor, inicialize o registro principal de cartas, unidades e líderes.");
+		perror("Por favor, inicialize o registro principal.");
 		
 		return;
 	}
@@ -328,7 +330,7 @@ void MCards_RegisterLeaderCard(MCards_LeaderCardBase * leaderCardBase, const cha
 {
 	if(registry == NULL || registry->leaderCardIDs == NULL || registry->leaderCardData == NULL)
 	{
-		perror("Por favor, inicialize o registro principal de cartas, unidades e líderes.");
+		perror("Por favor, inicialize o registro principal.");
 		
 		return;
 	}
@@ -386,7 +388,7 @@ void MCards_StartUpCards()
 {
 	if(registry == NULL)
 	{
-		perror("Por favor, inicialize o registro principal de cartas, unidades e líderes.");
+		perror("Por favor, inicialize o registro principal.");
 		
 		return;
 	}
@@ -416,21 +418,21 @@ void MCards_StartUpCards()
 	
 	MCards_CardBase * cards[15];
 	
-	cards[0]  = MCards_CreateCard("T_Gravedigger_Name",   "T_Gravedigger_Flavor",   3, cardSpawns[0],  1);
-	cards[1]  = MCards_CreateCard("T_Tribals_Name",       "T_Tribals_Flavor",       2, cardSpawns[1],  1);
-	cards[2]  = MCards_CreateCard("T_Pelican_Name",       "T_Pelican_Flavor",       5, cardSpawns[2],  1);
-	cards[3]  = MCards_CreateCard("T_Bandit_Name",        "T_Bandit_Flavor",        4, cardSpawns[3],  1);
-	cards[4]  = MCards_CreateCard("T_LRobot_Name",        "T_LRobot_Flavor",        4, cardSpawns[4],  1);
-	cards[5]  = MCards_CreateCard("T_Capybaras_Name",     "T_Capybaras_Flavor",     5, cardSpawns[5],  1);
-	cards[6]  = MCards_CreateCard("T_Seagulls_Name",      "T_Seagulls_Flavor",      2, cardSpawns[6],  1);
-	cards[7]  = MCards_CreateCard("T_Crusher_Name",       "T_Crusher_Flavor",       7, cardSpawns[7],  1);
-	cards[8]  = MCards_CreateCard("T_Theropod_Name",      "T_Theropod_Flavor",      4, cardSpawns[8],  1);
-	cards[9]  = MCards_CreateCard("T_StrangeWorms_Name",  "T_StrangeWorms_Flavor",  5, cardSpawns[9],  1);
-	cards[10] = MCards_CreateCard("T_Hallucination_Name", "T_Hallucination_Flavor", 5, cardSpawns[10], 2);
-	cards[11] = MCards_CreateCard("T_PampaHorseman_Name", "T_PampaHorseman_Flavor", 5, cardSpawns[11], 1);
-	cards[12] = MCards_CreateCard("T_GunDealer_Name",     "T_GunDealer_Flavor",     4, cardSpawns[12], 1);
-	cards[13] = MCards_CreateCard("T_PlagueKiller_Name",  "T_PlagueKiller_Flavor",  4, cardSpawns[13], 1);
-	cards[14] = MCards_CreateCard("T_TheCaptain_Name",    "T_TheCaptain_Flavor",    4, cardSpawns[14], 2);
+	cards[0]  = MCards_CreateCard("T_Gravedigger_Name",   "T_Gravedigger_Flavor",   3, cardSpawns[0],  1, E_MCards_Basic   );
+	cards[1]  = MCards_CreateCard("T_Tribals_Name",       "T_Tribals_Flavor",       2, cardSpawns[1],  1, E_MCards_Basic   );
+	cards[2]  = MCards_CreateCard("T_Pelican_Name",       "T_Pelican_Flavor",       5, cardSpawns[2],  1, E_MCards_Rare    );
+	cards[3]  = MCards_CreateCard("T_Bandit_Name",        "T_Bandit_Flavor",        4, cardSpawns[3],  1, E_MCards_Basic   );
+	cards[4]  = MCards_CreateCard("T_LRobot_Name",        "T_LRobot_Flavor",        4, cardSpawns[4],  1, E_MCards_Rare    );
+	cards[5]  = MCards_CreateCard("T_Capybaras_Name",     "T_Capybaras_Flavor",     5, cardSpawns[5],  1, E_MCards_Rare    );
+	cards[6]  = MCards_CreateCard("T_Seagulls_Name",      "T_Seagulls_Flavor",      2, cardSpawns[6],  1, E_MCards_Basic   );
+	cards[7]  = MCards_CreateCard("T_Crusher_Name",       "T_Crusher_Flavor",       7, cardSpawns[7],  1, E_MCards_Advanced);
+	cards[8]  = MCards_CreateCard("T_Theropod_Name",      "T_Theropod_Flavor",      4, cardSpawns[8],  1, E_MCards_Rare    );
+	cards[9]  = MCards_CreateCard("T_StrangeWorms_Name",  "T_StrangeWorms_Flavor",  5, cardSpawns[9],  1, E_MCards_Basic   );
+	cards[10] = MCards_CreateCard("T_Hallucination_Name", "T_Hallucination_Flavor", 5, cardSpawns[10], 2, E_MCards_Advanced);
+	cards[11] = MCards_CreateCard("T_PampaHorseman_Name", "T_PampaHorseman_Flavor", 5, cardSpawns[11], 1, E_MCards_Rare    );
+	cards[12] = MCards_CreateCard("T_GunDealer_Name",     "T_GunDealer_Flavor",     4, cardSpawns[12], 1, E_MCards_Basic   );
+	cards[13] = MCards_CreateCard("T_PlagueKiller_Name",  "T_PlagueKiller_Flavor",  4, cardSpawns[13], 1, E_MCards_Rare    );
+	cards[14] = MCards_CreateCard("T_TheCaptain_Name",    "T_TheCaptain_Flavor",    4, cardSpawns[14], 2, E_MCards_Advanced);
 	
 	const char * cardIDs[15];
 	
@@ -634,7 +636,7 @@ MCards_CardSpawn * MCards_CreateCardSpawn(const char * iD, unsigned int count)
 	return cardSpawn;
 }
 
-MCards_CardBase * MCards_CreateCard(const char * nk, const char * dk, int dc, MCards_CardSpawn * spawns[], size_t spawnCount)
+MCards_CardBase * MCards_CreateCard(const char * nk, const char * dk, int dc, MCards_CardSpawn * spawns[], size_t spawnCount, MCards_Rarity rarity)
 {
 	MCards_CardBase * card = malloc(sizeof(MCards_CardBase) + spawnCount * sizeof(MCards_CardSpawn *));
 	
@@ -698,6 +700,7 @@ MCards_CardBase * MCards_CreateCard(const char * nk, const char * dk, int dc, MC
 	}
 	
 	card->spawnCount = spawnCount;
+	card->rarity = rarity;
 	
 	return card;
 }
@@ -894,4 +897,56 @@ MCards_UnitBase ** MCards_GetAllUnitDatas()
 	}
 	
 	return unitData;
+}
+
+MCards_LeaderBase ** MCards_GetAllLeaderDatas()
+{
+	if(registry == NULL)
+	{
+		perror("O registro principal não foi préviamente alocado. Por favor, aloque-o.");
+		
+		return NULL;
+	}
+	
+	MCards_LeaderBase ** leaderData = malloc(registry->leaderCount * sizeof(MCards_LeaderBase *));
+	
+	if(leaderData == NULL)
+	{
+		perror("A lista de líderes a serem retornados foi alocada sem sucesso.");
+		
+		return NULL;
+	}
+	
+	for(size_t index = 0; index < registry->leaderCount; index++)
+	{
+		leaderData[index] = registry->leaderData[index];
+	}
+	
+	return leaderData;
+}
+
+MCards_LeaderCardBase ** MCards_GetAllLeaderCardDatas()
+{
+	if(registry == NULL)
+	{
+		perror("O registro principal não foi préviamente alocado. Por favor, aloque-o.");
+		
+		return NULL;
+	}
+	
+	MCards_LeaderCardBase ** leaderCardData = malloc(registry->leaderCardCount * sizeof(MCards_LeaderCardBase *));
+	
+	if(leaderCardData == NULL)
+	{
+		perror("A lista de líderes a serem retornados foi alocada sem sucesso.");
+		
+		return NULL;
+	}
+	
+	for(size_t index = 0; index < registry->leaderCardCount; index++)
+	{
+		leaderCardData[index] = registry->leaderCardData[index];
+	}
+	
+	return leaderCardData;
 }

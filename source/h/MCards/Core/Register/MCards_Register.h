@@ -4,6 +4,7 @@
 #include <stddef.h>
 
 #include <MCards/Core/Register/MCards_Factory.h>
+#include <MCards/Core/Rarity/MCards_Rarity.h>
 
 #define DEF_MCards_MaxCardSpawns 2
 
@@ -123,10 +124,11 @@ MCards_CardSpawn * MCards_CreateCardSpawn(const char * iD, unsigned int count);
  * @param   [in] dc O custo de implantação da carta.
  * @param   [in] spawns Os dados de conjuração da carta.
  * @param   [in] spawnCount A quantidade de dados de conjuração (definidos no parâmetro anterior) da carta.
+ * @param   [in] rarity A raridade de obter uma cópia da carta.
  *
  * @return  Uma estrutura base de carta genérica alocada na memória.
  */
-MCards_CardBase * MCards_CreateCard(const char * nk, const char * dk, int dc, MCards_CardSpawn * spawns[], size_t spawnCount);
+MCards_CardBase * MCards_CreateCard(const char * nk, const char * dk, int dc, MCards_CardSpawn * spawns[], size_t spawnCount, MCards_Rarity rarity);
 
 /**
  * @brief   Criação e alocação uma nova unidade na memória.

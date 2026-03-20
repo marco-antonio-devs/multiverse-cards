@@ -1,6 +1,8 @@
 #ifndef DEF_MCards_Localization_Header
 #define DEF_MCards_Localization_Header
 
+#include <MCards/Core/Rarity/MCards_Rarity.h>
+
 /**
  * @brief   Conjunto de idiomas disponíveis.
  * @details Este conjunto inclui três idiomas europeus, um norte-americano, um sul-americano e um asiático.
@@ -20,8 +22,8 @@ MCards_Language;
 
 typedef struct
 {
-	const char * key;
-	const char * translation[E_MCards_LanguageCount];
+	char * key;
+	char ** translation;
 }
 MCards_LocalizationEntry;
 
@@ -42,7 +44,7 @@ extern MCards_LocalizationRegistry * localizationRegistry;
  *
  * @param   [in] defaultLanguage A linguagem padrão ao inicializar.
  */
-void MCards_InitializeLocalization(MCards_Language defaultLanguage);
+void MCards_InitializeLocalization();
 
 /**
  * @brief   Limpeza e desativação do registro de localizações.
@@ -52,7 +54,7 @@ void MCards_CleanUpLocalization();
 
 /**
  * @brief   Mudança e atualização da linguagem selecionada.
- * @details Deve ser chamada <b>após</b> a chamada de inicialização do registro de localizações.
+ * @details Deve ser chamada após a chamada de inicialização do registro de localizações.
  *
  * @param   [in] value A linguagem selecionada.
  */
@@ -60,11 +62,21 @@ void MCards_SetCurrentLanguage(MCards_Language value);
 
 /**
  * @brief   Adição de uma chave a ser traduzida.
- * @details Deve ser chamada <b>após</b> a chamada de inicialização do registro de localizações.
+ * @details Deve ser chamada após a chamada de inicialização do registro de localizações.
  *
  * @param   [in] key A chave cuja será traduzida de acordo com o idioma selecionado.
  * @param   [in] translations O conjunto de traduções relacionadas com a chave, com cada elemento representando uma versão textual correspondente ao idioma selecionado.
  */
-void MCards_RegisterLocalizationKey(const char * key, const char * languages[E_MCards_LanguageCount]);
+void MCards_RegisterLocalizationKey(char * key, char ** languages);
+
+/**
+ * @brief   Tradução do tipo de raridade, de índice em número interio para um título.
+ * @details Deve ser chamada após a chamada de inicialização do registro de localizações.
+ * 
+ * @param   [in] rarity O tipo de raridade solicitado para a tradução.
+ * 
+ * @return  Um título para o tipo de raridade selecionado.
+ */
+char * MCards_TranslateRarityType(MCards_Rarity rarity);
 
 #endif
