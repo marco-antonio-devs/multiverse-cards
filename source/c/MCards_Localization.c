@@ -109,13 +109,16 @@ void MCards_CleanUpLocalization()
 	{
 		MCards_LocalizationEntry * entry = localizationRegistry->entries[index];
 		
-		printf("Liberando uma chave de tradução no índice %ld da lista registrada (%s)...\n", index, (entry->key) ? entry->key : "idioma desconhecido");
+		printf("Liberando uma chave de tradução no índice %ld da lista registrada (%s)...\n", index, (entry->key != NULL) ? entry->key : "idioma desconhecido");
 		
-		for(size_t translationIndex = 0; translationIndex < E_MCards_LanguageCount; translationIndex++)
+		if(entry->translation)
 		{
-			printf("- Liberando uma tradução no índice %ld (%s);\n", translationIndex, entry->translation[translationIndex]);
-			
-			free(entry->translation[translationIndex]);
+			for(size_t translationIndex = 0; translationIndex < E_MCards_LanguageCount; translationIndex++)
+			{
+				printf("- Liberando uma tradução no índice %ld (%s);\n", translationIndex, entry->translation[translationIndex]);
+				
+				free(entry->translation[translationIndex]);
+			}
 		}
 		
 		printf("\n");
@@ -211,7 +214,31 @@ void MCards_RegisterLocalizationKey(char * key, char ** languages)
 		return;
 	}
 	
-	newEntry->translation = languages;
+	strcpy(newEntry->key, key);
+	
+	newEntry->translation = malloc(E_MCards_LanguageCount * sizeof(char *));
+	
+	if(!newEntry->key)
+	{
+		perror("Houve uma falha ao alocar memória para a lista de traduções.\n");
+		
+		free(newEntry->key);
+		free(newEntry);
+		
+		return;
+	}
+	
+	for(size_t index = 0; index < E_MCards_LanguageCount; index++)
+	{
+		size_t translationLength = strlen(languages[index]) + 1;
+		
+		newEntry->translation[index] = malloc(translationLength);
+		
+		if(newEntry->translation[index])
+		{
+			strcpy(newEntry->translation[index], languages[index]);
+		}
+	}
 	
 	localizationRegistry->entries[localizationRegistry->entryCount] = newEntry;
 	localizationRegistry->entryCount++;

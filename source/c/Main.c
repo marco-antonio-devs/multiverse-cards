@@ -64,20 +64,20 @@ SDL_AppResult SDL_AppInit(void ** appstate, int argc, char * argv[])
 	
 	for(size_t index = 0; index < registry->cardCount; index++)
 	{
-		printf("Foi localizada uma carta no índice %zu (chave do nome de exibição: %s).\n", index, cardData[index]->displayName);
+		printf("Foi localizada uma carta no índice %zu (identificador único: %s).\n", index, registry->cardIDs[index]);
 		printf("- Custo de implantação da carta: %d;\n", cardData[index]->deployCost);
 		printf("- Total de conjurações da carta: %ld;\n", cardData[index]->spawnCount);
 		printf("- Raridade de obtenção: %s;\n", MCards_TranslateRarityType(cardData[index]->rarity));
-		printf("- Dados de conjuração da carta: ");
+		printf("- Dados de conjuração da carta:\n");
 		
 		MCards_CardSpawn ** spawns = cardData[index]->spawns;
 		
 		for(size_t spawnIndex = 0; spawnIndex < cardData[index]->spawnCount; spawnIndex++)
 		{
-			printf("{ iD = %s, count = %u };", spawns[spawnIndex]->iD, spawns[spawnIndex]->count);
+			printf("   { iD = %s, count = %u };\n", spawns[spawnIndex]->iD, spawns[spawnIndex]->count);
 		}
 		
-		printf("\n\n");
+		printf("\n");
 	}
 	
 	free(cardData);
