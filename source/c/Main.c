@@ -142,11 +142,18 @@ SDL_AppResult SDL_AppIterate(void * appstate)
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	SDL_RenderClear(renderer);
 	
+	SDL_FRect nextCardRectangle = {30, 1024, 115, 150};
+	
+	nextCardRectangle.w /= 1.5;
+	nextCardRectangle.h /= 1.5;
+	
+	MCards_AddRectangle(nextCardRectangle, 36, 36, 36, 255);
+	
 	for(size_t index = 0; index < 4; index++)
 	{
-		SDL_FRect rectangle = {0, 1024, 132, 192};
+		SDL_FRect rectangle = {0, 1024, 115, 150};
 		
-		rectangle.x = 38 + (index * 168);
+		rectangle.x = 140 + (index * 138);
 		
 		MCards_AddRectangle(rectangle, 255, 0, 0, 255);
 	}
