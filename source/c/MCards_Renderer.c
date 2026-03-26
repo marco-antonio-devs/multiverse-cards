@@ -19,3 +19,18 @@ void MCards_AddRectangle(SDL_FRect rectangle, unsigned int redChannel, unsigned 
 	SDL_RenderFillRect(renderer, &rectangle);
 	SDL_RenderRect(renderer, &rectangle);
 }
+
+void MCards_UpdateDisplay()
+{
+	if(renderer == NULL)
+	{
+		perror("O renderizador requirido para atualizar não foi inicializado. Por favor, defina-o.");
+		
+		return;
+	}
+	
+	SDL_RenderPresent(renderer);
+	
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	SDL_RenderClear(renderer);
+}

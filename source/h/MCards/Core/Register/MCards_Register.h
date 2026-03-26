@@ -165,10 +165,11 @@ MCards_LeaderBase * MCards_CreateLeader(int hp, int dm, float ad, float ar);
  * @param   [in] dn O nome de exibição da carta de líder.
  * @param   [in] dd A descrição da carta de líder.
  * @param   [in] ri O identificador do líder dentro do registro.
+ * @param   [in] ra A raridade de obter uma cópia da carta.
  *
  * @return  Uma estruturs base de carta de líder genérica alocada na memória.
  */
-MCards_LeaderCardBase * MCards_CreateLeaderCard(char * nk, char * dk, char * ri);
+MCards_LeaderCardBase * MCards_CreateLeaderCard(char * nk, char * dk, char * ri, MCards_Rarity ra);
 
 /**
  * @brief   Consulta e verificação da existência de uma carta no registro.

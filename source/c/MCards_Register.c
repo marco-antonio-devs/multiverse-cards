@@ -578,11 +578,11 @@ void MCards_StartUpLeaderCards()
 	
 	MCards_LeaderCardBase * leaderCards[5];
 	
-	leaderCards[0] = MCards_CreateLeaderCard("T_Pirate_Name",       "T_Pirate_Flavor",       "L_Pirate");
-	leaderCards[1] = MCards_CreateLeaderCard("T_MightyTribal_Name", "T_MightyTribal_Flavor", "L_MightyTribal");
-	leaderCards[2] = MCards_CreateLeaderCard("T_Samurai_Name",      "T_Samurai_Flavor",      "L_Samurai");
-	leaderCards[3] = MCards_CreateLeaderCard("T_Executioner_Name",  "T_Executioner_Flavor",  "L_Executioner");
-	leaderCards[4] = MCards_CreateLeaderCard("T_Thief_Name",        "T_Thief_Flavor",        "L_Thief");
+	leaderCards[0] = MCards_CreateLeaderCard("T_Pirate_Name",       "T_Pirate_Flavor",       "L_Pirate",       E_MCards_Basic   );
+	leaderCards[1] = MCards_CreateLeaderCard("T_MightyTribal_Name", "T_MightyTribal_Flavor", "L_MightyTribal", E_MCards_Basic   );
+	leaderCards[2] = MCards_CreateLeaderCard("T_Samurai_Name",      "T_Samurai_Flavor",      "L_Samurai",      E_MCards_Rare    );
+	leaderCards[3] = MCards_CreateLeaderCard("T_Executioner_Name",  "T_Executioner_Flavor",  "L_Executioner",  E_MCards_Advanced);
+	leaderCards[4] = MCards_CreateLeaderCard("T_Thief_Name",        "T_Thief_Flavor",        "L_Thief",        E_MCards_Rare    );
 	
 	const char * leaderCardIDs[5];
 	
@@ -744,7 +744,7 @@ MCards_LeaderBase * MCards_CreateLeader(int hp, int dm, float ad, float ar)
 	return leader;
 }
 
-MCards_LeaderCardBase * MCards_CreateLeaderCard(char * nk, char * dk, char * ri)
+MCards_LeaderCardBase * MCards_CreateLeaderCard(char * nk, char * dk, char * ri, MCards_Rarity ra)
 {
 	MCards_LeaderCardBase * leaderCard = malloc(sizeof(MCards_LeaderCardBase));
 	
@@ -794,6 +794,8 @@ MCards_LeaderCardBase * MCards_CreateLeaderCard(char * nk, char * dk, char * ri)
 	strcpy(leaderCard->displayName, nk);
 	strcpy(leaderCard->displayDescription, dk);
 	strcpy(leaderCard->referenceID, ri);
+	
+	leaderCard->rarity = ra;
 	
 	return leaderCard;
 }

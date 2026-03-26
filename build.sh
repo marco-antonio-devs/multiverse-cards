@@ -60,4 +60,6 @@ if test -d build/multiverse-cards ; then
 	
 	echo "Multiverse Cards - Build successful!"
 	
+	build/multiverse-cards
+	
 fi

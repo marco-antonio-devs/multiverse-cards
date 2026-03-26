@@ -44,7 +44,7 @@ SDL_AppResult SDL_AppInit(void ** appstate, int argc, char * argv[])
 		return SDL_APP_FAILURE;
 	}
 	
-	if(!SDL_CreateWindowAndRenderer("Multiverse Cards", 720, 1280, SDL_WINDOW_RESIZABLE, &window, &renderer))
+	if(!SDL_CreateWindowAndRenderer("Multiverse Cards (MCards)", 720, 1280, SDL_WINDOW_RESIZABLE, &window, &renderer))
 	{
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Houve uma falha ao tentar inicializar a biblioteca de áudio da SDL3. Erro específico: %s;", SDL_GetError());
 		
@@ -74,7 +74,7 @@ SDL_AppResult SDL_AppInit(void ** appstate, int argc, char * argv[])
 		
 		for(size_t spawnIndex = 0; spawnIndex < cardData[index]->spawnCount; spawnIndex++)
 		{
-			printf("   { iD = %s, count = %u };\n", spawns[spawnIndex]->iD, spawns[spawnIndex]->count);
+			printf("--- { iD = %s, count = %u };\n", spawns[spawnIndex]->iD, spawns[spawnIndex]->count);
 		}
 		
 		printf("\n");
@@ -139,8 +139,7 @@ SDL_AppResult SDL_AppEvent(void * appstate, SDL_Event * event)
 
 SDL_AppResult SDL_AppIterate(void * appstate)
 {
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-	SDL_RenderClear(renderer);
+	MCards_UpdateDisplay();
 	
 	SDL_FRect nextCardRectangle = {30, 1024, 115, 150};
 	
@@ -157,8 +156,6 @@ SDL_AppResult SDL_AppIterate(void * appstate)
 		
 		MCards_AddRectangle(rectangle, 255, 0, 0, 255);
 	}
-	
-	SDL_RenderPresent(renderer);
 	
 	return SDL_APP_CONTINUE;
 }
