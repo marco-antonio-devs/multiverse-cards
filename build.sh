@@ -6,11 +6,26 @@ if dpkg-query -W -f='${Status}' libsdl3-0 2>/dev/null | grep -q "ok installed" ;
 	
 	echo "You have \`libsdl3-dev\` installed. Continuing..."
 	
+	if test -d ./build ; then
+		
+		echo "Removing and remaking - Build directory."
+		
+		rm -rf ./build
+		mkdir ./build
+		
+	else
+		
+		echo "Making - Build directory."
+		
+		mkdir ./build
+		
+	fi
+	
 else
 	
-	echo "You do not have \`libsdl3-dev\` installed. Aborting..."
+	echo "You do not have \`libsdl3-dev\` installed. Task aborted."
 	
-	exit 1
+	return 1
 	
 fi
 
@@ -59,7 +74,5 @@ fi
 if test -d build/multiverse-cards ; then
 	
 	echo "Multiverse Cards - Build successful!"
-	
-	build/multiverse-cards
 	
 fi
