@@ -394,7 +394,7 @@ void MCards_StartUpCards()
 		return;
 	}
 	
-	MCards_SpawnData * SpawnDatas[15][DEF_MCards_MaxSpawnDatas] =
+	MCards_SpawnData * SpawnDatas[16][DEF_MCards_MaxSpawnDatas] =
 	{
 		NULL
 	};
@@ -416,8 +416,9 @@ void MCards_StartUpCards()
 	SpawnDatas[13][0] = MCards_CreateSpawnData("U_PlagueKiller",        1);
 	SpawnDatas[14][0] = MCards_CreateSpawnData("U_SkeletalCaptain",     1);
 	SpawnDatas[14][1] = MCards_CreateSpawnData("U_CaptainSupporter",    2);
+	SpawnDatas[15][0] = MCards_CreateSpawnData("U_Reaper",              1);
 	
-	MCards_CardBase * cards[15];
+	MCards_CardBase * cards[16];
 	
 	cards[0]  = MCards_CreateCard("T_Gravedigger_Name",   "T_Gravedigger_Flavor",   3, SpawnDatas[0],  1, E_MCards_Basic   );
 	cards[1]  = MCards_CreateCard("T_Tribals_Name",       "T_Tribals_Flavor",       2, SpawnDatas[1],  1, E_MCards_Basic   );
@@ -434,8 +435,9 @@ void MCards_StartUpCards()
 	cards[12] = MCards_CreateCard("T_GunDealer_Name",     "T_GunDealer_Flavor",     4, SpawnDatas[12], 1, E_MCards_Basic   );
 	cards[13] = MCards_CreateCard("T_PlagueKiller_Name",  "T_PlagueKiller_Flavor",  4, SpawnDatas[13], 1, E_MCards_Rare    );
 	cards[14] = MCards_CreateCard("T_TheCaptain_Name",    "T_TheCaptain_Flavor",    5, SpawnDatas[14], 2, E_MCards_Advanced);
+	cards[15] = MCards_CreateCard("T_Reaper_Name",        "T_Reaper_Flavor",        4, SpawnDatas[15], 1, E_MCards_Advanced);
 	
-	const char * cardIDs[15];
+	const char * cardIDs[16];
 	
 	cardIDs[0]  = "C_Gravedigger";
 	cardIDs[1]  = "C_Tribals";
@@ -452,6 +454,7 @@ void MCards_StartUpCards()
 	cardIDs[12] = "C_GunDealer";
 	cardIDs[13] = "C_PlagueKiller";
 	cardIDs[14] = "C_TheCaptain";
+	cardIDs[15] = "C_Reaper";
 	
 	size_t cardLength = sizeof(cards) / sizeof(MCards_CardBase *);
 	
@@ -475,7 +478,7 @@ void MCards_StartUpUnits()
 		return;
 	}
 	
-	MCards_UnitBase * units[18];
+	MCards_UnitBase * units[19];
 	
 	units[0]  = MCards_CreateUnit(650,  70,  1.1f, 2.0f, 1.5f);
 	units[1]  = MCards_CreateUnit(168,  28,  0.9f, 2.5f, 4.5f);
@@ -495,8 +498,9 @@ void MCards_StartUpUnits()
 	units[15] = MCards_CreateUnit(500,  50,  1.2f, 2.0f, 1.0f);
 	units[16] = MCards_CreateUnit(770,  80,  1.4f, 2.0f, 1.5f);
 	units[17] = MCards_CreateUnit(180,  24,  0.9f, 2.0f, 4.0f);
+	units[18] = MCards_CreateUnit(850,  90,  1.4f, 1.8f, 6.0f);
 	
-	const char * unitIDs[18];
+	const char * unitIDs[19];
 	
 	unitIDs[0]  = "U_Gravedigger";
 	unitIDs[1]  = "U_Tribal";
@@ -516,6 +520,7 @@ void MCards_StartUpUnits()
 	unitIDs[15] = "U_Warrior"; // Esta unidade não será utilizada até a implementação das primeiras construções.
 	unitIDs[16] = "U_SkeletalCaptain";
 	unitIDs[17] = "U_CaptainSupporter";
+	unitIDs[18] = "U_Reaper";
 	
 	size_t unitLength = sizeof(units) / sizeof(MCards_UnitBase *);
 	

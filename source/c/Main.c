@@ -158,7 +158,7 @@ SDL_AppResult SDL_AppInit(void ** appstate, int argc, char * argv[])
 	cardIDList2[4] = "C_TheCaptain";
 	cardIDList2[5] = "C_Capybaras";
 	cardIDList2[6] = "C_Seagulls";
-	cardIDList2[7] = "C_Hallucination";
+	cardIDList2[7] = "C_Reaper";
 	
 	printf("Inicializando o primeiro baralho.\n");
 	

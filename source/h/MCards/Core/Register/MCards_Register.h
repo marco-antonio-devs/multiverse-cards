@@ -156,7 +156,7 @@ MCards_UnitBase * MCards_CreateUnit(int hp, int dm, float ad, float ms, float ar
  * 
  * @return  Uma estrutura base de unidade genérica alocada na memória.
  */
-MCards_StaticBase * MCards_CreateUnit(int hp, int dm, float ad, float ar, float lt);
+MCards_StaticBase * MCards_CreateStatic(int hp, int dm, float ad, float ar, float lt);
 
 /**
  * @brief   Criação e alocação um novo estático (invocador) na memória.
@@ -170,7 +170,7 @@ MCards_StaticBase * MCards_CreateUnit(int hp, int dm, float ad, float ar, float 
  * 
  * @return  Uma estrutura base de unidade genérica alocada na memória.
  */
-MCards_StaticBase * MCards_CreateUnit(int hp, int dm, float ad, float ar, float lt);
+MCards_StaticSummonerBase * MCards_CreateStaticSummoner(int hp, int dm, float ad, float ar, float lt);
 
 /**
  * @brief   Criação e alocação um novo líder na memória.

@@ -91,6 +91,16 @@ MCards_UserDeck * MCards_CreateUserDeck(char ** ac, char * al)
 	userDeck->attachedLeader = al;
 	userDeck->allCards = ac;
 	
+	printf("Houveram cartas e líderes válidos selecionados na criação deste baralho.\n\n");
+	
+	for(size_t index = 0; index < cardCount; index++)
+	{
+		printf("A carta de índice %zu corresponde ao identificador %s.\n", index, ac[index]);
+	}
+	
+	printf("\n");
+	printf("O índice selecionado ao baralho corresponde ao identificador %s.\n", al);
+	
 	return userDeck;
 }
 

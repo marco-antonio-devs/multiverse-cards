@@ -110,21 +110,6 @@ void MCards_CleanUpLocalization()
 		MCards_LocalizationEntry * entry = localizationRegistry->entries[index];
 		
 		printf("Liberando uma chave de tradução no índice %ld da lista registrada (%s)...\n", index, (entry->key != NULL) ? entry->key : "idioma desconhecido");
-		
-		if(entry->translation)
-		{
-			for(size_t translationIndex = 0; translationIndex < E_MCards_LanguageCount; translationIndex++)
-			{
-				printf("- Liberando uma tradução no índice %ld (%s);\n", translationIndex, entry->translation[translationIndex]);
-				
-				free(entry->translation[translationIndex]);
-			}
-		}
-		
-		printf("\n");
-		
-		free(entry->key);
-		free(entry->translation);
 		free(entry);
 	}
 	

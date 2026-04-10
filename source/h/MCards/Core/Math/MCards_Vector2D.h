@@ -45,7 +45,7 @@ MCards_Vector2D * MCards_CreateVector2D(float xc, float yc);
  *
  * @return  Uma estrutura básica de vetor bidimensional.
  */
-MCards_NormalizedVector2D * MCards_CreateVector2D(float cx, float cy);
+MCards_NormalizedVector2D * MCards_CreateNormalizedVector2D(float cx, float cy);
 
 /**
  * @brief   Obtenção e retorno do valor de coordenada horizontal do vetor.
